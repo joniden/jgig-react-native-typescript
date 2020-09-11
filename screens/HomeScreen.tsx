@@ -1,9 +1,13 @@
 import * as React from 'react';
-import { StyleSheet, Image, Text, View } from 'react-native';
+import { StyleSheet, Image, Text, Dimensions } from 'react-native';
+import { View } from '../components/Themed'
 import { Lastgig } from '../models/LastGig'
 import { baseUrl, getHome } from '../network/API';
 import Labels from '../components/Labels';
 import { Colors } from '../constants/Colors';
+
+const win = Dimensions.get('window');
+const ratio = win.width/541;
 
 export default function HomeScreen() {
 
@@ -21,7 +25,11 @@ export default function HomeScreen() {
 
     return (
     <View style={styles.container}> 
-         <Image style={styles.image} source={{ uri: lastGig?.images[0].path ?? "1"}} />
+         <Image 
+         resizeMode={"center"}
+         style={styles.image} 
+         source={{ uri: lastGig?.images[0].path ?? "1"}} 
+         />
         <View>
             <Text style={styles.title}>{lastGig?.name ?? ""}</Text>
             <Text style={styles.subTitle}>{lastGig?.venue.name ?? ""}</Text>
@@ -40,8 +48,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    height: 214,
-    width: "100%"
+    marginTop: 200,
+    alignSelf: "stretch",
+    height: 300,
+    width: win.width
   },
   title: {
     fontSize: 28,
