@@ -4,7 +4,8 @@ const tintColorDark = '#fff';
 
 export const Colors = {
   purple: "#5E5CE6",
-  gray: 'rgba(235, 235, 245, 0.6)'
+  gray: 'rgba(235, 235, 245, 0.6)',
+  darkGray: '#1D1D1D'
 } 
 
 export default {

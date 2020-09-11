@@ -1,26 +1,45 @@
 import * as React from 'react';
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, FlatList, SectionList } from 'react-native';
 import { Text, View } from '../components/Themed';
+import { getGigs } from '../network/API'; 
+import { Gig } from '../models/Gig';
+import { GigListItem } from '../components/GigListItem';
 import Label from '../components/Label';
+import { groupBy } from '../functions/functions';
 import { Colors } from '../constants/Colors';
 
 export default function GigsScreen() {
+
+  const [gigs, setGigs] = React.useState<Map<string, Gig[]>>()
+
+  React.useEffect(() => {
+    getGigs()
+    .then( result => {
+      const gigs: Gig[] = result
+
+      // Group by year
+      let group = groupBy(gigs, gig => gig.from_date.toString().split("-")[0] )
+      setGigs(group);
+    })
+  }, []);
+
   return (
     <View style={styles.container}>
-        <Image style={styles.image} source={require('../assets/images/icon.png')} />
-        <View>
-            <Text style={styles.title}>BandName</Text>
-            <Text style={styles.subTitle}>Location</Text>
-            <View style={styles.labels}>
-                <Label name="Label" />
-                <Label name="Label" />
-                <Label name="Label" />
-                <Label name="Label" />
-            </View>
-        </View>
+
+        
     </View>
   );
 }
+
+/*
+<FlatList
+          key="flatlist"
+          data={gigs}
+          renderItem = {({ item, separators }) => (
+            <GigListItem gig={item} />
+          )}
+       />
+       */
 
 const styles = StyleSheet.create({
   container: {
@@ -32,9 +51,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     alignItems: "flex-start"
-  },
-  image: {
-    height: 214
   },
   title: {
     fontSize: 28,

@@ -9,13 +9,20 @@ interface Props {
 
 const Labels: React.FC<Props> = (props) => {
 
+    const filterbands = props.bands.slice(0,2)
+
+    if (filterbands.length > 2) {
+
+    }
+
     return (
        <View style={{ 
         flex: 1,
         flexDirection: "row",
-        alignItems: "flex-start"
+        alignItems: "flex-start",
+        flexWrap: "wrap"
         }}>
-           { props.bands.map( b => (
+           { filterbands.map( b => (
                <Label 
                key={b.id}
                name={b.name} />

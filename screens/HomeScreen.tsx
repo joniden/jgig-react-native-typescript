@@ -15,8 +15,8 @@ export default function HomeScreen() {
 
     React.useEffect(() => {
         getHome()
-        .then( gig => {
-            let lastGig: Lastgig = gig
+        .then( result => {
+            let lastGig: Lastgig = result
             lastGig.images = lastGig.images.map ( g => ({ ...g, path: baseUrl + g.path }) )
             setLastGig(lastGig)
             
