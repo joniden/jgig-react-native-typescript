@@ -9,11 +9,11 @@ interface Props {
     gig: Gig;
 }
 
-export const GigListItem: React.FC<Props> = (props) => {
+export function GigListItem(props: Props): JSX.Element {
     return(
         <View style={styles.container}>
             <Text style={styles.title}>{props.gig.name}</Text>
-            <Text style={styles.subTitle}>{props.gig.venue.name}</Text>
+            <Text style={styles.subTitle}>{props.gig.venue.name ?? ""}</Text>
             <Labels bands={props.gig.bands} />
         </View>
     )
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
 
     },
     title: {
-      fontSize: 28,
+      fontSize: 16,
       fontWeight: "bold",
       marginVertical: 8,
       color: "#fff"

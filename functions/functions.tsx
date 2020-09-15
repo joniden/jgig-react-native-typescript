@@ -10,6 +10,7 @@
  * @returns Map of the array grouped by the grouping function.
  */
 export function groupBy<V, K>(list: Array<V>, keyGetter:(input: V) => K) {
+
     const map = new Map();
     list.forEach((item) => {
          const key = keyGetter(item);
@@ -20,5 +21,25 @@ export function groupBy<V, K>(list: Array<V>, keyGetter:(input: V) => K) {
              collection.push(item);
          }
     });
+
     return map;
+}
+
+import { Section } from '../models/Section';
+
+/**
+ * 
+ * @param map Any Map
+ * 
+ * @returns array of objects with title and data keys
+ */
+export function mapToSection<T>(map: Map<any, any>) {
+
+    // Convert map to SectionList of objects 
+    let dict: Section[] = [];
+    map.forEach((array, key) => {
+        dict.push({title: key, data: array})
+    });
+
+    return dict;
 }
