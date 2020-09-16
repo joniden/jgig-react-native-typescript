@@ -14,4 +14,5 @@ export type HomeParamList = {
 
 export type GigsParamList = {
   GigsScreen: undefined;
+  GigScreen: undefined;
 };

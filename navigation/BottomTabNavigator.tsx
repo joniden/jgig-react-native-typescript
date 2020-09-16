@@ -7,6 +7,7 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import HomeScreen from '../screens/HomeScreen';
 import GigsScreen from '../screens/GigsScreen';
+import GigScreen from '../screens/GigScreen';
 import { BottomTabParamList, HomeParamList, GigsParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -61,12 +62,17 @@ const GigsStack = createStackNavigator<GigsParamList>();
 
 function GigsNavigator() {
   return (
-    <HomeStack.Navigator>
+    <GigsStack.Navigator>
       <GigsStack.Screen
         name="GigsScreen"
         component={ GigsScreen}
-        options={{ headerTitle: 'Latest Gig' }}
+        options={{ headerTitle: 'All gigs' }}
       />
-    </HomeStack.Navigator>
+      <GigsStack.Screen
+        name="GigScreen"
+        component={ GigScreen }
+        options={ GigScreen.navigationOptions }
+      />
+    </GigsStack.Navigator>
   );
 }

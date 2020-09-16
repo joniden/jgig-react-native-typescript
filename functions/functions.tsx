@@ -1,3 +1,4 @@
+
 /**
  * @description
  * Takes an Array<V>, and a grouping function,
@@ -42,4 +43,10 @@ export function mapToSection<T>(map: Map<any, any>) {
     });
 
     return dict;
+}
+
+export const convertToDate = (dateString: string) => {
+    const parts = dateString.split(" ")[0];
+    const date = new Date(parts);
+    return date
 }

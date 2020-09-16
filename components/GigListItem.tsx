@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Button } from 'react-native';
 import { View, Text } from "./Themed";
 import { Gig } from "../models/Gig";
 import { Colors } from '../constants/Colors';
 import Labels from './Labels';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 interface Props {
     gig: Gig;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, SafeAreaView, SectionList } from 'react-native';
+import { StyleSheet, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
 import { Text, View } from '../components/Themed';
 import { getGigs } from '../network/API'; 
 import { Gig } from '../models/Gig';
@@ -7,8 +7,17 @@ import { Section } from '../models/Section';
 import { GigListItem } from '../components/GigListItem';
 import { groupBy, mapToSection } from '../functions/functions';
 import { Colors } from '../constants/Colors';
+import { useNavigation } from '@react-navigation/native';
+import { SectionHeader } from '../components/SectionHeader';
+
 
 export default function GigsScreen() {
+
+  const navigation = useNavigation();
+
+  const pushToGig = (gig: Gig) => {
+    navigation.navigate('GigScreen', {gig: gig})
+  }
 
   const [sections, setSections] = React.useState<Section[]>([])
 
@@ -16,9 +25,8 @@ export default function GigsScreen() {
     getGigs()
     .then( result => {
       const gigs: Gig[] = result
-
       // Group by year
-      let group = groupBy(gigs, gig => gig.from_date.toString().split("-")[0] )
+      let group = groupBy(gigs, gig => gig.from_date.getFullYear().toString())
       let dict = mapToSection(group)
       setSections(dict);
     })
@@ -29,9 +37,13 @@ export default function GigsScreen() {
        <SectionList style={styles.list}
         sections={ sections } 
         keyExtractor={(item, index) => index.toString()}
-        renderItem={ ({item}) => <GigListItem gig={item} /> }
+        renderItem={ ({item}) => (
+          <TouchableOpacity onPress={() => pushToGig(item)}>
+            <GigListItem gig={item} /> 
+          </TouchableOpacity>
+        )}
         renderSectionHeader={({ section: {title} }) => (
-          <Text style={styles.sectionheader}>{title}</Text>
+          <SectionHeader title={title} />
         )}
         />
         
@@ -63,14 +75,5 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: Colors.gray,
     marginBottom: 8
-  },
-  sectionheader: {
-    fontSize: 16,
-    fontWeight: "bold",
-    backgroundColor: Colors.darkGray,
-    paddingHorizontal: 16,
-    paddingTop: 21,
-    paddingBottom: 8,
-    color: Colors.gray
   }
 });

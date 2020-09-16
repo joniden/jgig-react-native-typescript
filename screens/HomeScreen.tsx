@@ -5,9 +5,7 @@ import { Lastgig } from '../models/LastGig'
 import { baseUrl, getHome } from '../network/API';
 import Labels from '../components/Labels';
 import { Colors } from '../constants/Colors';
-
-const win = Dimensions.get('window');
-const ratio = win.width/541;
+import Layout from '../constants/Layout';
 
 export default function HomeScreen() {
 
@@ -17,7 +15,6 @@ export default function HomeScreen() {
         getHome()
         .then( result => {
             let lastGig: Lastgig = result
-            lastGig.images = lastGig.images.map ( g => ({ ...g, path: baseUrl + g.path }) )
             setLastGig(lastGig)
             
         })
@@ -51,7 +48,7 @@ const styles = StyleSheet.create({
     marginTop: 200,
     alignSelf: "stretch",
     height: 300,
-    width: win.width
+    width: Layout.window.width
   },
   title: {
     fontSize: 28,
