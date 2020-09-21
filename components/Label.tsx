@@ -1,15 +1,23 @@
 import * as React from 'react';
 import { Colors } from '../constants/Colors';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, LayoutChangeEvent } from 'react-native';
+import useContainerDimensions from '../hooks/useContainerDimensions';
 
 export interface Props {
     name: string;
     key: any;
+    onLayout: (event: LayoutChangeEvent) => void;
 }
 
 const Label: React.FC<Props> = (props) => {
+
+    function measureView(event: LayoutChangeEvent) {
+       
+    }
+
     return (
-        <View style={styles.textWrap}>
+
+        <View onLayout={props.onLayout} style={styles.textWrap}>
             <Text key={props.key} style={styles.text}>{props.name ?? ""}</Text>
         </View>
     )

@@ -1,4 +1,4 @@
-import { Gig } from './Gig';
+import { Gig } from './GigModels';
 
 export interface Section {
     title: string,

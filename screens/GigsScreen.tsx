@@ -5,7 +5,7 @@ import { getGigs } from '../network/API';
 import { Gig } from '../models/GigModels';
 import { Section } from '../models/Section';
 import { GigListItem } from '../components/GigListItem';
-import { groupBy, mapToSection } from '../functions/functions';
+import { groupBy, mapToSection } from '../functions';
 import { Colors } from '../constants/Colors';
 import { useNavigation } from '@react-navigation/native';
 import { SectionHeader } from '../components/SectionHeader';
