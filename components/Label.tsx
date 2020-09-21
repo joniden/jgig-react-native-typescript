@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Colors } from '../constants/Colors';
 import { View, StyleSheet, Text, LayoutChangeEvent } from 'react-native';
-import useContainerDimensions from '../hooks/useContainerDimensions';
 
 export interface Props {
     name: string;
@@ -10,10 +9,6 @@ export interface Props {
 }
 
 const Label: React.FC<Props> = (props) => {
-
-    function measureView(event: LayoutChangeEvent) {
-       
-    }
 
     return (
 

@@ -5,7 +5,7 @@ import { Gig, Band } from '../models/GigModels';
 import { Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
-import { ListRenderItem, StyleSheet } from 'react-native';
+import { ListRenderItem, StyleSheet, ScrollView } from 'react-native';
 import { SectionHeader } from '../components/SectionHeader';
 import Layout from '../constants/Layout';
 
@@ -22,7 +22,8 @@ export default function GigScreen({...props}) {
     const numberOfBands = gig.bands.length.toString()
 
     return(
-        <View style={styles.container}>
+
+        <ScrollView style={styles.container}>
             <Image 
                 resizeMode={"center"}
                 style={styles.image} 
@@ -40,7 +41,7 @@ export default function GigScreen({...props}) {
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={renderItem}
             />
-        </View>
+        </ScrollView>
     );
 }
 
@@ -50,7 +51,7 @@ GigScreen.navigationOptions = ({...screenProps}) => ({
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: Colors.darkGray
+       // backgroundColor: Colors.darkGray
     },
     locationDate: {
         paddingVertical: 16,
