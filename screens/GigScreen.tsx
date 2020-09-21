@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { View, Text } from '../components/Themed';
 import { Colors } from '../constants/Colors';
-import { Gig } from '../models/Gig';
-import { Band } from '../models/LastGig'
+import { Gig, Band } from '../models/GigModels';
 import { Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
@@ -21,7 +20,7 @@ export default function GigScreen({...props}) {
     let gig: Gig = props.route.params.gig
 
     const numberOfBands = gig.bands.length.toString()
-        console.log(gig.images[0].path );
+
     return(
         <View style={styles.container}>
             <Image 
@@ -45,7 +44,7 @@ export default function GigScreen({...props}) {
     );
 }
 
-GigScreen.navigationOptions = screenProps => ({
+GigScreen.navigationOptions = ({...screenProps}) => ({
     headerTitle: screenProps.route.params.gig.name, 
 })
 
