@@ -9,6 +9,7 @@ import HomeScreen from '../screens/HomeScreen';
 import GigsScreen from '../screens/GigsScreen';
 import GigScreen from '../screens/GigScreen';
 import BandsScreen from '../screens/BandsScreen';
+import BandScreen from '../screens/BandScreen';
 import { BottomTabParamList, HomeParamList, GigsParamList, BandsParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -93,6 +94,11 @@ function BandsNavigator() {
         name="BandsScreen"
         component={ BandsScreen}
         options={{ headerTitle: 'All bands' }}
+      />
+      <BandsStack.Screen
+        name="BandScreen"
+        component={ BandScreen }
+        options={ BandScreen.navigationOptions }
       />
     </BandsStack.Navigator>
   );

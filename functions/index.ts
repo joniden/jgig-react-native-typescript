@@ -45,6 +45,11 @@ export function mapToSection<T>(map: Map<any, any>) {
     return dict;
 }
 
+export function groupToSection<V, K>(list: Array<V>, keyGetter:(input: V) => K) {
+    const map = groupBy(list, keyGetter);
+    return mapToSection(map);
+}
+
 export const convertToDate = (dateString: string) => {
     const parts = dateString.split(" ")[0];
     const date = new Date(parts);

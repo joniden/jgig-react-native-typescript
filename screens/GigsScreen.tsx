@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { StyleSheet, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
-import { Text, View } from '../components/Themed';
 import { getGigs } from '../network/API'; 
 import { Gig } from '../models/GigModels';
 import { Section } from '../models/Section';

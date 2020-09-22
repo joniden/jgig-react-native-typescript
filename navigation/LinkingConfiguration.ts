@@ -16,6 +16,11 @@ export default {
               GigsScreen: 'gigs',
             },
           },
+          Bands: {
+            screens: {
+              BandsScreen: 'bands',
+            },
+          },
         },
       },
       NotFound: '*',

@@ -4,14 +4,11 @@ import { Colors } from '../constants/Colors';
 import { Gig, Band } from '../models/GigModels';
 import { Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { FlatList } from 'react-native-gesture-handler';
-import { ListRenderItem, StyleSheet, ScrollView } from 'react-native';
+import { ListRenderItem, StyleSheet, ScrollView, FlatList } from 'react-native';
 import { SectionHeader } from '../components/SectionHeader';
 import Layout from '../constants/Layout';
 
 export default function GigScreen({...props}) {
-
-    const navigation = useNavigation();
 
     const renderItem: ListRenderItem<Band> = ({...props}) => (
         <Text style={styles.bandItem}>{props.item.name}</Text>

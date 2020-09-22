@@ -4,8 +4,9 @@ import { View, Text } from '../components/Themed';
 import { Colors } from '../constants/Colors';
 import { StyleSheet, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
 import { Section } from '../models/Section';
+import { useNavigation } from '@react-navigation/native';
 import { SectionHeader } from '../components/SectionHeader';
-import { groupBy, mapToSection} from '../functions';
+import { groupToSection } from '../functions';
 import { getBands } from '../network/API';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -13,13 +14,18 @@ const BandsScreen = () => {
 
     const [sections, setSections] = React.useState<Section[]>([])
 
+    const navigation = useNavigation();
+
+    const pushToBand = (band: Band) => {
+        navigation.navigate('BandScreen', {band: band})
+    }
+
     React.useEffect(() => {
         getBands()
         .then(result => {
             const bands: Band[] = result
             // Group by letter
-            let group = groupBy(bands, band => band.name.charAt(0))
-            let dict = mapToSection(group)
+            let dict = groupToSection(bands, band => band.name.charAt(0))
             setSections(dict);
         })
     }, [])
@@ -36,7 +42,6 @@ const BandsScreen = () => {
                     <Text style={styles.counter}>{props.band.gigs.length}</Text>
                     <Icon name="chevron-right" size={15} style={styles.icon} />
                 </View>
-                <View style={styles.separator}/>
             </>
         );
     }
@@ -47,11 +52,14 @@ const BandsScreen = () => {
             sections={ sections } 
             keyExtractor={(item, index) => index.toString()}
             renderItem={ ({item}) => (
-                <BandListItem band={item} />
+                <TouchableOpacity onPress={() => pushToBand(item)}>
+                    <BandListItem band={item} />
+                </TouchableOpacity>
             )}
             renderSectionHeader={({ section: {title} }) => (
               <SectionHeader title={title} />
             )}
+            ItemSeparatorComponent={() => <View style={styles.separator}/>}
             />
             
         </SafeAreaView>
