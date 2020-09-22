@@ -18,6 +18,7 @@ export interface Band {
     created_at: Date;
     updated_at: Date;
     pivot:      Pivot;
+    gigs:       Gig[];
 }
 
 export interface Pivot {

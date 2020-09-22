@@ -8,7 +8,8 @@ import useColorScheme from '../hooks/useColorScheme';
 import HomeScreen from '../screens/HomeScreen';
 import GigsScreen from '../screens/GigsScreen';
 import GigScreen from '../screens/GigScreen';
-import { BottomTabParamList, HomeParamList, GigsParamList } from '../types';
+import BandsScreen from '../screens/BandsScreen';
+import { BottomTabParamList, HomeParamList, GigsParamList, BandsParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -28,6 +29,12 @@ export default function BottomTabNavigator() {
         <BottomTab.Screen 
         name="Gigs"
         component={GigsNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-microphone" color={color} />,
+        }} />
+        <BottomTab.Screen 
+        name="Bands"
+        component={BandsNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-microphone" color={color} />,
         }} />
@@ -74,5 +81,19 @@ function GigsNavigator() {
         options={ GigScreen.navigationOptions }
       />
     </GigsStack.Navigator>
+  );
+}
+
+const BandsStack = createStackNavigator<BandsParamList>();
+
+function BandsNavigator() {
+  return (
+    <BandsStack.Navigator>
+      <BandsStack.Screen
+        name="BandsScreen"
+        component={ BandsScreen}
+        options={{ headerTitle: 'All bands' }}
+      />
+    </BandsStack.Navigator>
   );
 }
