@@ -35,9 +35,7 @@ const Labels: React.FC<Props> = props => {
         }    
 
         if (windowWidth < totalWidth + padding) {
-            console.log("before",labelContent)
             labelContent.splice(1,1);
-            console.log("after",labelContent)
         }
 
         setLabelsContent(labelContent);

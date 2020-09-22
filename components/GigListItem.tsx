@@ -10,14 +10,13 @@ interface Props {
 }
 
 export function GigListItem(props: Props): JSX.Element {
-
   return(
       <View style={styles.container}>
           <Text style={styles.title}>{props.gig.name}</Text>
-          {props.gig.venue != undefined ?? 
+          {props.gig.venue != undefined && 
             <Text style={styles.subTitle}>{props.gig.venue.name ?? ""}</Text>
           } 
-          {props.gig.bands != undefined ?? 
+          {props.gig.bands != undefined &&
           <Labels bands={props.gig.bands} />
           }
       </View>

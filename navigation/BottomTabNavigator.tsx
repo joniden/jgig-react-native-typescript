@@ -37,7 +37,7 @@ export default function BottomTabNavigator() {
         name="Bands"
         component={BandsNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-microphone" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="md-musical-notes" color={color} />,
         }} />
     </BottomTab.Navigator>
   );

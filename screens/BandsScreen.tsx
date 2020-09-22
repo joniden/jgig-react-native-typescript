@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SectionHeader } from '../components/SectionHeader';
 import { groupToSection } from '../functions';
 import { getBands } from '../network/API';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { Ionicons } from '@expo/vector-icons';
 
 const BandsScreen = () => {
 
@@ -40,7 +40,7 @@ const BandsScreen = () => {
                 <View style={styles.bandListItem}>
                     <Text style={styles.itemText}>{props.band.name}</Text>
                     <Text style={styles.counter}>{props.band.gigs.length}</Text>
-                    <Icon name="chevron-right" size={15} style={styles.icon} />
+                    <Ionicons name="ios-arrow-forward" size={15} style={styles.icon} />
                 </View>
             </>
         );

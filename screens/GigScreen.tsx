@@ -14,18 +14,19 @@ export default function GigScreen({...props}) {
         <Text style={styles.bandItem}>{props.item.name}</Text>
     );
 
-    let gig: Gig = props.route.params.gig
-
+    const gig: Gig = props.route.params.gig
     const numberOfBands = gig.bands.length.toString()
 
     return(
 
         <ScrollView style={styles.container}>
+            {gig.images.length > 0 &&
             <Image 
                 resizeMode={"center"}
                 style={styles.image} 
                 source={{ uri: gig.images[0].path ?? "1"}} 
                 />
+            }
             <View style={styles.locationDate}>        
                 <Text style={styles.venue}>{gig.venue.name}</Text>
                 <Text style={styles.dateRow}>{gig.from_date.toLocaleDateString()}</Text>

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { StyleSheet, Image, Text } from 'react-native';
-import { View } from '../components/Themed'
+import { StyleSheet, Image } from 'react-native';
+import { View, Text } from '../components/Themed'
 import { Lastgig } from '../models/GigModels'
 import { getHome } from '../network/API';
 import Labels from '../components/Labels';

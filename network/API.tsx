@@ -23,6 +23,7 @@ export const getGigs = () => {
     return fetch(`${baseUrl}/gigs/all?json`)
     .then(response => response.json())
     .then(result => result.gigs)
+    .then(gigs => gigs.filter( gig => gig.bands.length > 0 ))
     .then(gigs => gigs.reverse())
     .then(gigs => {
         let gs: Gig[] = gigs

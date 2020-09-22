@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     textWrap: {
         minWidth: "auto",
         minHeight: "auto",
-        marginHorizontal: 4,
+        marginRight: 4,
         marginVertical: 0,
         paddingHorizontal: 8,
         paddingVertical: 1,
